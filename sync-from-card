@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+# Will sync files from /media/SDCard to ~/Music and write log to ~/Music/SyncFromCard.log
+
+truncate -s 0 "$HOME/Music/SyncFromCard.log"
+
+rsync -avzh --progress "/media/Music/Songs From Mac/" "$HOME/Music/" > "$HOME/Music/SyncFromCard.log" &
+
+disown
